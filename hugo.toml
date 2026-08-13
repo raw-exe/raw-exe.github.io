@@ -1,0 +1,48 @@
+baseURL = "https://raw-exe.github.io/"
+locale = "pt-br"
+title = "RAW.EXE"
+
+theme = "PaperMod"
+
+[params]
+  description = "Diario moderno de ideias, arte, codigo e cultura visual."
+  defaultTheme = "dark"
+  siteFont = "Inter, Segoe UI, system-ui, sans-serif"
+  displayFont = "ArcaneNine, Inter, Segoe UI, sans-serif"
+  ShowReadingTime = true
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+
+[params.raw]
+  kicker = "NEON JOURNAL"
+  headline = "RAW.EXE"
+  subtitle = "Work, ideas, projects, and portfolio"
+  primaryAction = "POSTS"
+  secondaryAction = "About"
+  signalOne = "codigo"
+  signalTwo = "arte"
+  signalThree = "visual"
+
+[[menu.main]]
+  identifier = "posts"
+  name = "Posts"
+  url = "/posts/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "tags"
+  name = "Tags"
+  url = "/tags/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "sobre"
+  name = "About"
+  url = "/about/"
+  weight = 30
+
+
+
+
+
+

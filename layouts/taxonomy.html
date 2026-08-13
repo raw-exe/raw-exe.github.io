@@ -1,0 +1,30 @@
+{{- define "main" }}
+<section class="raw-taxonomy" data-raw-hero>
+  <div class="raw-about-video" data-depth="0.12" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="{{ "media/jinx-background.mp4" | relURL }}" type="video/mp4">
+    </video>
+  </div>
+  <div class="raw-about-gradient" data-depth="0.2" aria-hidden="true"></div>
+
+  <article class="raw-taxonomy-card">
+    <p class="raw-kicker">Index</p>
+    <h1>{{ .Title }}</h1>
+    <p class="raw-taxonomy-description">Browse notes, write ups, projects, and ideas by topic.</p>
+
+    <ul class="raw-tag-grid" aria-label="Tags">
+      {{- $mainTags := slice "ideas" "projects" "write ups" -}}
+      {{- range $mainTags }}
+        {{- $tag := . -}}
+        {{- $pages := where site.RegularPages "Params.tags" "intersect" (slice $tag) -}}
+        <li>
+          <a href="{{ printf "tags/%s/" ($tag | urlize) | relURL }}">
+            <span>{{ $tag }}</span>
+            <small>{{ len $pages }}</small>
+          </a>
+        </li>
+      {{- end }}
+    </ul>
+  </article>
+</section>
+{{- end }}

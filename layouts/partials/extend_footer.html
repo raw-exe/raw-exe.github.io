@@ -1,0 +1,5 @@
+{{ $rawParallax := resources.Get "js/raw-parallax.js" }}
+{{ if $rawParallax }}
+  {{ $rawParallax = $rawParallax | minify | fingerprint }}
+  <script defer src="{{ $rawParallax.RelPermalink }}" integrity="{{ $rawParallax.Data.Integrity }}"></script>
+{{ end }}

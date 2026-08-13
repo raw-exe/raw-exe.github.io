@@ -1,0 +1,39 @@
+{{- define "main" }}
+<section class="raw-posts-page" data-raw-hero>
+  <div class="raw-about-video" data-depth="0.12" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="{{ "media/jinx-background.mp4" | relURL }}" type="video/mp4">
+    </video>
+  </div>
+  <div class="raw-about-gradient" data-depth="0.2" aria-hidden="true"></div>
+
+  <div class="raw-posts-shell">
+    <header class="raw-posts-header">
+      <p class="raw-kicker">Archive</p>
+      <h1>{{ .Title | default "Posts" }}</h1>
+      <p>Write-ups, projects, notes, and ideas collected in one place.</p>
+    </header>
+
+    <div class="raw-posts-list">
+      {{- range .Pages.ByDate.Reverse }}
+      <article class="raw-post-list-card">
+        <a class="raw-post-list-link" href="{{ .RelPermalink }}" aria-label="Open {{ .Title | plainify }}"></a>
+        <div>
+          <p class="raw-card-meta">{{ .Date | time.Format "02 Jan 2006" }} / {{ .ReadingTime }} min</p>
+          <h2>{{ .Title }}</h2>
+          {{- if .Summary }}
+          <p>{{ .Plain | htmlUnescape | truncate 180 }}</p>
+          {{- end }}
+        </div>
+        {{- with .Params.tags }}
+        <div class="raw-card-tags">
+          {{- range first 4 . }}<span>{{ . }}</span>{{ end -}}
+        </div>
+        {{- end }}
+      </article>
+      {{- end }}
+    </div>
+  </div>
+</section>
+{{- end }}
+

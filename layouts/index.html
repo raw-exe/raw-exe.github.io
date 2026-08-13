@@ -1,0 +1,55 @@
+{{- define "main" }}
+{{- $raw := site.Params.raw -}}
+<section class="raw-hero" data-raw-hero>
+  <div class="raw-video-layer" data-depth="0.12" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata" poster="">
+      <source src="{{ "media/jinx-background.mp4" | relURL }}" type="video/mp4">
+    </video>
+  </div>
+  <div class="raw-gradient-layer" data-depth="0.2" aria-hidden="true"></div>
+  <div class="raw-light-orbit raw-light-a" data-depth="0.34" aria-hidden="true"></div>
+  <div class="raw-light-orbit raw-light-b" data-depth="0.45" aria-hidden="true"></div>
+
+  <div class="raw-hero-inner">
+    <h1 class="raw-title">{{ $raw.headline | default site.Title }}</h1>
+    <p class="raw-subtitle">{{ $raw.subtitle | default site.Params.description }}</p>
+
+    <div class="raw-actions" aria-label="Acoes principais">
+      <a class="raw-button raw-button-primary" href="{{ "posts/" | relURL }}">{{ $raw.primaryAction | default "Ler posts" }}</a>
+      <a class="raw-button raw-button-ghost" href="{{ "about/" | relURL }}">{{ $raw.secondaryAction | default "Sobre" }}</a>
+    </div>
+  </div>
+
+</section>
+
+<section class="raw-feed" id="posts">
+  <div class="raw-section-head">
+    <p>last ones</p>
+    <h2>RECENT POSTS</h2>
+  </div>
+
+  <div class="raw-post-grid">
+    {{- $pages := where site.RegularPages "Section" "posts" -}}
+    {{- range first 6 $pages }}
+    <article class="raw-post-card">
+      <a href="{{ .RelPermalink }}" aria-label="Abrir {{ .Title | plainify }}"></a>
+      <p class="raw-card-meta">{{ .Date | time.Format "02 Jan 2006" }} / {{ .ReadingTime }} min</p>
+      <h3>{{ .Title }}</h3>
+      <p>{{ .Plain | htmlUnescape | truncate 150 }}</p>
+      {{- with .Params.tags }}
+      <div class="raw-card-tags">
+        {{- range first 3 . }}<span>{{ . }}</span>{{ end -}}
+      </div>
+      {{- end }}
+    </article>
+    {{- end }}
+  </div>
+</section>
+{{- end }}
+
+
+
+
+
+
+

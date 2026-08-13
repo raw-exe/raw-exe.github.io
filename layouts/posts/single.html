@@ -1,0 +1,41 @@
+{{- define "main" }}
+<section class="raw-post-view" data-raw-hero>
+  <div class="raw-post-gradient-bg" data-depth="0.12" aria-hidden="true"></div>
+
+  <article class="raw-post-article">
+    <header class="raw-post-hero">
+      <p class="raw-kicker">Post</p>
+      <h1>{{ .Title }}</h1>
+      {{- if .Description }}
+      <p class="raw-post-description">{{ .Description }}</p>
+      {{- end }}
+      <div class="raw-post-meta">
+        <span>{{ .Date | time.Format "02 Jan 2006" }}</span>
+        <span>{{ .ReadingTime }} min read</span>
+      </div>
+      {{- with .Params.tags }}
+      <div class="raw-card-tags raw-post-hero-tags">
+        {{- range . }}<span>{{ . }}</span>{{ end -}}
+      </div>
+      {{- end }}
+    </header>
+
+    {{- if .Content }}
+    <div class="raw-post-content post-content md-content">
+      {{- if not (.Param "disableAnchoredHeadings") }}
+      {{- partial "anchored_headings.html" .Content -}}
+      {{- else }}{{ .Content }}{{ end }}
+    </div>
+    {{- end }}
+
+    <footer class="raw-post-footer">
+      <a href="{{ "posts/" | relURL }}">Back to posts</a>
+      {{- if (.Param "ShowPostNavLinks") }}
+      <div class="raw-post-nav">
+        {{- partial "post_nav_links.html" . -}}
+      </div>
+      {{- end }}
+    </footer>
+  </article>
+</section>
+{{- end }}
