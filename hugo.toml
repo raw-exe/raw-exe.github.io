@@ -1,11 +1,11 @@
 baseURL = "https://raw-exe.github.io/"
-locale = "pt-br"
+locale = "en-us"
 title = "RAW.EXE"
 
 theme = "PaperMod"
 
 [params]
-  description = "Diario moderno de ideias, arte, codigo e cultura visual."
+  description = "Cybersecurity, computer science, projects, write ups, and ideas by RAW.EXE."
   defaultTheme = "dark"
   siteFont = "Inter, Segoe UI, system-ui, sans-serif"
   displayFont = "ArcaneNine, Inter, Segoe UI, sans-serif"
@@ -14,7 +14,6 @@ theme = "PaperMod"
   ShowCodeCopyButtons = true
 
 [params.raw]
-  kicker = "NEON JOURNAL"
   headline = "RAW.EXE"
   subtitle = "Work, ideas, projects, and portfolio"
   primaryAction = "POSTS"
@@ -36,7 +35,7 @@ theme = "PaperMod"
   weight = 20
 
 [[menu.main]]
-  identifier = "sobre"
+  identifier = "about"
   name = "About"
   url = "/about/"
   weight = 30
