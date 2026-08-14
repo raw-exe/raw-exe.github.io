@@ -939,6 +939,7 @@ button,
   max-height: 4.8em;
 }
 
+.raw-posts-page,
 .raw-post-view {
   padding: clamp(1.25rem, 3vw, 2.75rem);
   background:
